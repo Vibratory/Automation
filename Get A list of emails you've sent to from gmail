@@ -1,0 +1,35 @@
+/*ACtl.runInTab('#currentTab',() => {
+document.getElementsByClassName('J-Ke n0')[4].click();
+alert('here1');
+
+});
+
+//await ACtl.on('tabLoadEnd', '#currentTab');
+await ACtl.sleep(2000);*/
+
+ACtl.runInTab('#currentTab', () => {
+	let Array = [];
+	
+	let selected = document.getElementById(":o2"); //this ID changes every time u reload
+
+	for (let n = 0; n < 50; n++) {
+
+		let att = selected.getElementsByClassName("zA")[n];
+
+		let attt = att.querySelector('span[email]');
+//alert(attt.getAttribute('email'));
+		Array[n] = attt.getAttribute('email');
+
+
+	}
+	
+const array = Array.join('\n');
+const blob =new Blob ([array], {type : 'text/plain'});
+const link = document.createElement('a');
+link.href = URL.createObjectURL(blob);
+link.download = 'Emails.txt';
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+
+});
